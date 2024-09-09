@@ -13,16 +13,22 @@ To install the program call: `make install` and it will be added to path with th
 # Cmdline Usage
 
 For help, `cppcreate help` or `cppcreate`
+
 To create a new project run: `cppcreate new <project_name>`
+
 To build a project go to the root directory with config.toml file and run: `cppcreate build`
+
 To run a project go to the root directory with config.toml file and run: `cppcreate run`
+
 To download the packages go to the root directory with config.toml file and run `cppcreate get_packages`
 
 # Config.toml
 
 # Tests
 All the tests are located in the `tests/` directory.
+
 To run all tests navigate to the test/ directory and use the command: `go test`
+
 To run individual tests use the command `go test -run <test func name>`
 
 # TODO:
