@@ -1,0 +1,18 @@
+[conf]
+  project_name = "sam"
+  lang_version = "17"
+  bin_dir = "bin/"
+  src_files = ["src/main.cpp"]
+  compiler = "g++"
+
+[[pkg]]
+name = "tomlplusplus"
+git_url= "https://github.com/marzer/tomlplusplus.git"
+tag = "v3.4.0"
+
+[[pkg]]
+name = "sdl2"
+git_url = "https://github.com/libsdl-org/SDL.git"
+tag = "release-2.28.5"
+build_type="Debug"
+dependencies=["SDL2::SDL2", "SDL2::SDL2main", "SDL2-static"]

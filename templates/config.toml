@@ -1,0 +1,14 @@
+[conf]
+project_name="other"
+lang_version="17"
+bin_dir="../templates/config.toml/bin"
+
+[[pkg]]
+name = "fmt"
+git_url= "github.com/fmt/fmt"
+dep=["opengl","fmt"]
+
+[[pkg]]
+name = "sfml"
+git_url= "github.com/sfml/sfml"
+dep=["opengl","sfml-window", "sfml-video"]

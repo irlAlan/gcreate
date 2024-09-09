@@ -1,0 +1,7 @@
+[conf]
+  project_name = "header_example"
+  lang_version = "17"
+  bin_dir = "bin/"
+  src_files = ["src/main.cpp", "src/foo.cpp"]
+  compiler = "g++"
+  build_type = "Debug"

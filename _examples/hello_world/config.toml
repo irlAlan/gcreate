@@ -1,0 +1,7 @@
+[conf]
+  project_name = "hello_world"
+  lang_version = "17"
+  bin_dir = "build/"
+  src_files = ["src/main.cpp"]
+  compiler = "g++"
+  build_type = "Debug"

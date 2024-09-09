@@ -1,0 +1,9 @@
+[conf]
+  project_name = "precompiled_sdl2_example"
+  lang_version = "17"
+  bin_dir = "bin/"
+  src_files = ["src/main.cpp", "src/Window.cpp"]
+  compiler = "g++"
+  flags = ["-Wall"]
+  build_type = "Debug"
+  linker_flags = ["SDL2"]
