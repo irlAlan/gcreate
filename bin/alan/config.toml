@@ -1,0 +1,8 @@
+[conf]
+  project_name = "alan"
+  lang_version = "17"
+  bin_dir = "bin/"
+  src_files = ["src/main.cpp"]
+  compiler = "g++"
+  build_type = "Debug"
+  lib_dir = ""

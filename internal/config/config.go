@@ -115,6 +115,7 @@ func ReadConfig() TConfig {
 
 type CompileCommandsJson struct{
   Directory string `json:"directory,omitempty"`
+  Commands []string `json:"command"`
   File string `json:"file,omitempty"`
   Output string `json:"output,omitempty"`
 }

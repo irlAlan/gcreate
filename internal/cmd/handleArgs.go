@@ -24,6 +24,7 @@ func HandleArgs(args []string) bool {
 	for cmd, cmdfunc := range cmds {
 		if len(args) < 1 {
 			Help(args)
+      os.Exit(0)
 		} else if args[0] == cmd.Name {
 			cmdfunc(args[1:])
 		}
