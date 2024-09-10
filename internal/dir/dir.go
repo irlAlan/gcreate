@@ -38,15 +38,15 @@ func Check(err error, detail string) bool {
 	return true
 }
 
-func Exists(path string) (bool, error) {
+func Exists(path string) bool {
 	_, err := os.Stat(path)
 	if err == nil {
-		return true, nil
+		return true
 	}
 	if os.IsNotExist(err) {
-		return false, nil
+		return false
 	}
-	return false, err
+	return false
 }
 
 func CreateFile(name string, input string) bool {
@@ -60,9 +60,9 @@ func CreateFile(name string, input string) bool {
 }
 
 func CreateDir(path string) bool {
-	exist, exist_err := Exists(path)
-	if exist_err != nil {
-		fmt.Println("Cannot create directory: ", exist_err)
+	exist := Exists(path)
+	if exist {
+		fmt.Println("Cannot create directory: it already exists")
 		return false
 	}
 	if !exist {

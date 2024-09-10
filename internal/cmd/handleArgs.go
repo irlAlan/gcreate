@@ -21,6 +21,7 @@ func HandleArgs(args []string) bool {
 
 	cmds := HandleCommands()
 
+	fmt.Println(args)
 	for cmd, cmdfunc := range cmds {
 		if len(args) < 1 {
 			Help(args)
@@ -29,8 +30,6 @@ func HandleArgs(args []string) bool {
 			cmdfunc(args[1:])
 		}
 	}
-
-	fmt.Println(args)
 	return true
 }
 

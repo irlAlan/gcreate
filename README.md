@@ -33,6 +33,7 @@ To run individual tests use the command `go test -run <test func name>`
 
 # TODO:
 - [X] Create Marshler so I can correctly output default config file
+- [ ] fix current tests
 - [ ] Refactor code & add more tests
 - [X] Check if file has been changed and if it has re-build only that one
 - [ ] Create custom logs i.e. output to file
