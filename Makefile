@@ -1,5 +1,5 @@
 run: build
-	./bin/cppcreate help 
+	./bin/gcreate help 
 
 build: main.go
 	go build -o bin/gcreate main.go
@@ -9,3 +9,6 @@ install: build
 
 test: build
 	go test ./tests/
+
+clean:
+	rm -rfv ~/.config/gcreate/; ~/.local/bin/gcreate; echo "DONE removing from path and config/gcreate";

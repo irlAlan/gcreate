@@ -29,21 +29,20 @@ func TestNewCommand(t *testing.T){
 }
 
 func TestHandleCommands(t *testing.T){
-  expected := *cmd.NewCommand("new","creates a new project directory", "creates a new project directory, Usage:\n\tcreate new <flag> where flag is the project name");
+	expected := *cmd.NewCommand("new", "creates a new project directory", "creates a new project directory, Usage:\n\tcreate new <flag> where flag is the project name")
   result := cmd.HandleCommands();
   
-  keys := make([]cmd.ArgCommand, 0, len(result))
   for c := range result {
-    keys = append(keys, c)
+    if c.Name == expected.Name{
+      fmt.Println("TestNewCommand was successfull");
+      return; 
+    }
   }
-  if keys[0].Name != expected.Name {
-    t.Errorf("Result was incorrect, got %+v, want %+v", result, expected);
-  }
-  fmt.Println("TestNewCommand was successfull");
+  t.Errorf("Result was incorrect, want %s", expected.Name);
 }
 
 func TestNewFunc(t *testing.T){ 
-  args := []string{"hey", "ther"};
+  args := []string{"hey"};
   result := cmd.New(args);
   expected := true;
   if !result{

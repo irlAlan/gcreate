@@ -3,8 +3,7 @@ package tests
 import (
 	"fmt"
 	"testing"
-
-	"github.com/irlalan/gcreate/internal/dir"
+  "github.com/irlalan/gcreate/internal/dir"
 )
 
 func assertneq(lexp any, rexp any) bool {
