@@ -1,26 +1,26 @@
-# cppcreate
+# gcreate 
 
 The idea of this project is to make a project manager and creator for C++ in golang.
 
-The main functions of cppcreate will be to create new projects and build/run them; it should be able to read (mostly, hopefully) with cmake and conan2.
+The main functions of gcreate will be to create new projects and build/run them; it should be able to read (mostly, hopefully) with cmake and conan2.
 
 # Install
 
 To build the program call: `make build` you can then use it in the bin folder as an executable
 
-To install the program call: `make install` and it will be added to path with the templates folder in your config/cppcreate folder
+To install the program call: `make install` and it will be added to path with the templates folder in your config/cppconfig folder
 
 # Cmdline Usage
 
-For help, `cppcreate help` or `cppcreate`
+For help, `gcreate help` or `gcrete`
 
-To create a new project run: `cppcreate new <project_name>`
+To create a new project run: `gcreate new <project_name>`
 
-To build a project go to the root directory with config.toml file and run: `cppcreate build`
+To build a project go to the root directory with config.toml file and run: `gcreate build`
 
-To run a project go to the root directory with config.toml file and run: `cppcreate run`
+To run a project go to the root directory with config.toml file and run: `gcreate run`
 
-To download the packages go to the root directory with config.toml file and run `cppcreate get_packages`
+To download the packages go to the root directory with config.toml file and run `gcreate get_packages`
 
 # Config.toml
 
