@@ -11,7 +11,7 @@ import (
 const TTemplateDir string = "/templates"
 
 func GetTemplateDir() string {
-	return GetHomeDir() + "/.config/cppcreate/templates"
+	return GetHomeDir() + "/.config/gcreate/templates"
 }
 
 func GetHomeDir() string {

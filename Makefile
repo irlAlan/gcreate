@@ -9,3 +9,7 @@ install: build
 
 test: build
 	go test ./tests/
+
+# replace with a script call that safely cleans up
+# clean:
+	# rm -rfv ~/.config/gcreate/; rm -rfv ~/.local/bin/gcreate

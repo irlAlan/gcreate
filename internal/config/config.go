@@ -26,6 +26,7 @@ type General struct {
 	Flags        []string `toml:"flags"`
   Linker_flags []string `toml:"linker_flags"`
   Lib_dir      string   `toml:"lib_dir"`
+  Build_all    bool     `toml:"build_all"`
 }
 
 // 18/08/24 focus on getting the url and downloading the packages
@@ -80,7 +81,7 @@ func ReadConfig() TConfig {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Undecoded keys: %q\n", md.Undecoded())
+	// fmt.Printf("Undecoded keys: %q\n", md.Undecoded())
 
 	if !md.IsDefined("conf", "src_files") {
 		fmt.Printf("conf.src_files is not defined, using default: src/main.cpp\n")

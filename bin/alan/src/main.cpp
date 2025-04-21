@@ -9,6 +9,5 @@ void println(T &...args) {
 
 int main(int argv, char **argc) {
   println("Hello World!");
-  println("alan!");
   return 0;
 }

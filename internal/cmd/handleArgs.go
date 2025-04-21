@@ -3,13 +3,11 @@ package cmd
 import (
 	"bytes"
 	"fmt"
+	// "log"
 	"os"
 	"os/exec"
 	"path/filepath"
 
-	// "strings"
-
-	// 	"strings"
 	"errors"
 	// "github.com/fsnotify/fsnotify"
 	"github.com/irlalan/gcreate/internal/config"
@@ -58,14 +56,20 @@ func New(args []string) bool {
 }
 
 func Build(args []string) bool {
-	// TODO: Build source files seperatly
-	// Serialise to compile_commands.json
+  // TODO: find compiler path
+  // TODO: Serialise to compile_commands.json -almost
 	conf := config.ReadConfig()
+  //f,e := exec.LookPath("iostream.h")
+  //if e != nil{
+  //  log.Fatal("error: ", e)
+  //}
+  //fmt.Println("file: ", f)
 	//var src string
 	//for _, data := range conf.Conf.Src_files {
 	//	src += data + " "
 	//}
 
+  if(!conf.Conf.Build_all){
 	// TODO: check if a file has been changed
 	for _, file := range conf.Conf.Src_files {
 		binfileinfo, binerr := os.Stat(conf.Conf.Bin_dir + dir.GetObjFile(file))
@@ -93,6 +97,16 @@ func Build(args []string) bool {
 			}
 		}
 	}
+  } else{ // build all
+    fmt.Println("Building all src files decalared");
+    for _, file := range conf.Conf.Src_files{
+      if !build_file(conf,file){
+        fmt.Println("Unable to build file")
+        return false;
+      }
+    }
+  }
+
   // TODO: add flags to show/disables created obj files maybe
 	// linking obj files
   var obj_files []string
@@ -109,49 +123,14 @@ func Build(args []string) bool {
   var compile_cmd config.CompileCommandsJson
   val := compile_cmd.Compile_commands(conf)
   dir.CreateFile("compile_commands.json", val)
-
-	//if build_src(conf.Conf.Compiler, conf.Conf.Src_files, conf.Conf.Bin_dir) {
-	//	fmt.Println("Finished building source files")
-	//} else {
-	//	fmt.Println("unable to build source files")
-	//}
-
-	//	var val exec.Cmd
-	//
-	//	val.Path = conf.Conf.Compiler
-	//	fmt.Println("Path: ", val.Path)
-	//	for i, val := range conf.Conf.Src_files {
-	//		conf.Conf.Src_files[i] = strings.Trim(val, " ")
-	//	}
-	//	val.Args = append(val.Args, conf.Conf.Flags...)
-	//	val.Args = append(val.Args, "-std=c++"+conf.Conf.Lang_version)
-	//	val.Args = append(val.Args, conf.Conf.Src_files...)
-	//	val.Args = append(val.Args, "-o", conf.Conf.Bin_dir+"/"+conf.Conf.Name)
-	//	fmt.Println("Args: ", val.Args)
-	//
-	//	// val.Args[0] = "-o"
-	//	// val.Args = conf.Conf.Src_files
-	//	// val.Run()
-	//	cmd := exec.Command(val.Path, val.Args...)
-	//	// cmd := exec.Command(conf.Conf.Compiler,src,"-o", strings.Trim(conf.Conf.Bin_dir," ")+strings.Trim(conf.Conf.Name, " "));
-	//	// cmd := exec.Command("g++", "--version");
-	//	var stderr bytes.Buffer
-	//	var out bytes.Buffer
-	//	val.Stdout = &out
-	//	val.Stderr = &stderr
-	//	err := cmd.Run() // using cmd cause val.Path() not working
-	//	if err != nil {
-	//		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-	//		return false
-	//	}
-	//	fmt.Println("Result: " + out.String())
 	return true
 }
 
 func Run(args []string) bool {
-	projname := config.ReadConfig().Conf.Name
+  conf := config.ReadConfig()
+	projname := conf.Conf.Name
 	var cmd exec.Cmd
-	cmd.Path = "./bin/" + projname
+	cmd.Path = conf.Conf.Bin_dir + projname
 	cmd.Args = append(cmd.Args, projname)
 	// cmd := exec.Command("cd", "./bin/", "./"+projname)
 	var stderr bytes.Buffer
